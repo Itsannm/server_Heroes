@@ -1,4 +1,5 @@
-from app import app, db
+from app import db
+from .app import app
 from models import Hero, Power, HeroPower
 import random
 from sqlalchemy import func  # Import the func module
