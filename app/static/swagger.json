@@ -1,0 +1,145 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "My API"
+    },
+    "paths": {
+      "/heroes": {
+        "get": {
+          "summary": "Get all heroes",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/heroes/{id}": {
+        "get": {
+          "summary": "Get a hero by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Hero not found"
+            }
+          }
+        }
+      },
+      "/powers": {
+        "get": {
+          "summary": "Get all powers",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/powers/{id}": {
+        "get": {
+          "summary": "Get a power by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Power not found"
+            }
+          }
+        },
+        "patch": {
+          "summary": "Update a power",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Power not found"
+            },
+            "400": {
+              "description": "Bad request"
+            }
+          }
+        }
+      },
+      "/hero_powers": {
+        "post": {
+          "summary": "Create a hero power",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "strength": {
+                    "type": "string",
+                    "enum": ["Strong", "Weak", "Average"]
+                  },
+                  "power_id": {
+                    "type": "integer"
+                  },
+                  "hero_id": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "404": {
+              "description": "Hero or Power not found"
+            },
+            "400": {
+              "description": "Bad request"
+            }
+          }
+        }
+      }
+    }
+  }
+  
